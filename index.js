@@ -56,8 +56,17 @@ app.get('/product', async(req, res) => {
           price: { $gte: minPrice, $lte: maxPrice }
         };
 
+        // if (search) {
+        //   filters.name = { $regex: search, $options: "i" }
+        // }
+
         if (search) {
-          filters.name = { $regex: search, $options: "i" };
+          filters.$or = [
+            { name: { $regex: search, $options: "i" } },
+            { brand: { $regex: search, $options: "i" } },
+            { features: { $regex: search, $options: "i" } },
+            { category: { $regex: search, $options: "i" } }
+          ];
         }
         
         if (category) {
