@@ -8,11 +8,6 @@ app.use(cors());
 app.use(express.json());
 
 
-// findItfast
-// aOFZo2rRrrT6EjPg
-
-
-
 const { MongoClient, ServerApiVersion } = require('mongodb');
 const uri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@cluster0.ehqhw1m.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
 
