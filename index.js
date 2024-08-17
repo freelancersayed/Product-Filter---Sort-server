@@ -38,16 +38,11 @@ app.get('/product', async(req, res) => {
 })
 
 
-app.get('/product', async(req, res) => {
-    const result = await productCollection.find().toArray();
-    res.send(result);
-})
-
     app.get('/products', async (req, res) => {
       try {
         // Query parameters
         const page = Math.max(parseInt(req.query.page) - 1, 0) || 0;
-        const limit = Math.max(parseInt(req.query.limit), 1) || 5;
+        const limit = Math.max(parseInt(req.query.limit), 1) || 8;
         const search = req.query.search || "";
         const category = req.query.category || "";
         const brand = req.query.brand || "";
@@ -59,6 +54,7 @@ app.get('/product', async(req, res) => {
         // Sort options
         let sortBy = {};
         sortBy[sort] = sortOrder === "asc" ? 1 : -1;
+        
 
         // Filters
         let filters = {
